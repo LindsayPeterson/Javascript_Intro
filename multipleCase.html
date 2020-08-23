@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="multipleCase();">Multiple Case Statements</button>
+    <button onclick="forgetBreak();">Forgot a break</button>
+    <script>
+        function multipleCase() {
+            let color = "Red";
+
+            switch(color) {
+                case "Red":
+                case "Pink":
+                    console.log("This color is red or pink")
+                    break;
+                case "Blue":
+                case "Red":
+                case "Light Blue":
+                    console.log("This color is blue")
+                    break;
+                default:
+                    console.log("Unknown product");
+                    break;
+            }
+        }
+        function forgetBreak() {
+            let productId = 2;
+
+            switch(productId) {
+                case 1:
+                    console.log("product 1");
+                    break;
+                case 2:
+                    console.log("Product 2")
+                    // break;
+                case 3:
+                    console.log("Product 3")
+                    break;
+                default:
+                    console.log("Unknown product");
+                    break;
+            }
+        }
+    </script>
+</body>
+</html>
