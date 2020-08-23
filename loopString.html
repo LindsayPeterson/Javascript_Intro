@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="loopString();">Loop string</button>
+
+    <script>
+        'use scrict';
+
+    // looping over a string
+    function loopString() {
+        let productName = "product name";
+        let letters = "";
+
+        for (const char of productName) {
+            letters += char;
+        }
+        console.log(letters);
+    }
+    </script>
+</body>

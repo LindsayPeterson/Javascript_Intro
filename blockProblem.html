@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="blockScopeProblem();">block scope problem</button>
+    <button onclick="blockScopeFix();">fix</button>
+    <script>
+        // function blockScopeProblem() {
+        //     let productId = 2;
+
+        //     switch(productId) {
+        //         case 1:
+        //             let message = "first product";
+        //             console.log(message);
+        //             break;
+        //         case 2:
+        //             let message = "second product";
+        //             break;
+        //         case 3:
+        //             let message = "third product";
+        //             break;
+        //         default:
+        //             let message = "Unknown product";
+        //             break;
+        //     }
+        // }
+        function blockScopeFix() {
+            let productId = 2;
+
+            switch(productId) {
+                case 1: {
+                    let message = "first product";
+                    console.log(message);
+                    break;
+                }
+                case 2: {
+                    let message = "second product";
+                    console.log(message);
+                    break;
+                }
+                case 3: {
+                    let message = "third product";
+                    console.log(message);
+                    break;
+                }
+                default: {
+                    let message = "Unknown product";
+                    console.log(message);
+                    break;
+                }
+            }
+        }
+    </script>
+</body>
+</html>

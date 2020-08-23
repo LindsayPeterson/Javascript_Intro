@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="forinSample();">for/in sample</button>
+
+    <script>'use scrict';
+
+    // Using a for/in loop
+    function forinSample() {
+        let product = {
+            "productId": 680,
+            "name": "Some product name",
+            "productNumber": "AAABBBCCC-123",
+            "color": "Black",
+            "cost": 34.99,
+            "listPrice": 49.99,
+            grossProfit: function () {
+                return this.listPrice - this.cost;
+            }
+        };
+
+        for (const key in product) {
+            console.log( "'" + key + "'=" + product[key]);
+        }
+    }
+    </script>
+</body>

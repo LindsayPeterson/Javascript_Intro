@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Switch Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="forofSample();">for/of sample</button>
+
+    <script>
+        'use scrict';
+
+    // Using a for/of loop
+    let _products = [
+        {
+            "productId": 680,
+            "name": "Some product name",
+            "productNumber": "AAABBBCCC-123",
+            "color": "Black",
+            "cost": 34.99,
+            "listPrice": 49.99
+        },
+        {
+            "productId": 222,
+            "name": "another product name",
+            "productNumber": "blah-987",
+            "color": "pink",
+            "cost": 148.45,
+            "listPrice": 1982.95
+        }
+    ];
+
+    // using a for/of loop
+    function forofSample() {
+        for (const item of _products) {
+            console.log(JSON.stringify(item));
+        }
+    }
+    </script>
+</body>
