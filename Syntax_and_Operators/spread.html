@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>arrays</title>
+</head>
+
+<body>
+    <button onclick="spreadConstructors();">spread</button>
+
+    <script>
+        'use scrict';
+
+    // Use with 'new'
+    function spreadConstructors() {
+        let dt = new Date(2019, 10, 15);
+        console.log(dt);
+
+        let dateFields = [2019, 11, 15];
+        dt = new Date(...dateFields);
+        console.log(dt);
+}
+    </script>
+</body>
+</html>
