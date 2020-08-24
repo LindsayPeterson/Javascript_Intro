@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>try, catch, finally Samples</title>
+</head>
+
+<body>
+    <button onclick="tryCatch();">try catch</button>
+    <button onclick="finallyCatch();">final catch</button> 
+
+    <script>
+         'use scrict'
+
+    function tryCatch () {
+        let result;
+
+        try {
+          result = x / 10;
+        } catch (error) {
+          console.log(error.message);
+        }
+    }
+
+    function finallyCatch() {
+        let result;
+        let x = 100;
+
+        try {
+            console.log("error will occur");
+            result = x / 10;
+            console.log("this line will never run");
+        } catch (error) {
+            console.log("in the catch block: " + error.message);
+        }
+        finally {
+            console.log("finally block");
+        }
+    }
+    </script>
+</body>
