@@ -3,7 +3,7 @@
 
 ## 2020 roadmap
 
-One of Lindsay's goals is to become more fimilar with Javascript. She is following the Javascript Core Language courses provided by [Pluralsight](https://app.pluralsight.com/paths/skills/javascript-core-language)
+One of Lindsay's 2020 goals is to become more familiar with Javascript. She is following the Javascript Core Language courses provided by [Pluralsight](https://app.pluralsight.com/paths/skills/javascript-core-language)
 
 # Classes todo -
 * [Variables and types](https://app.pluralsight.com/library/courses/javascript-variables-types/table-of-contents)
