@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>True/False Statement Samples</title>
+</head>
+
+<body>
+    <button onclick="trueFalseSample();">true or false</button>
+
+    <script>
+         'use scrict'
+
+    function trueFalseSample () {
+        let price = 200;
+        let color = "Red";
+        let result;
+
+        console.log("Check for 'true' values")
+        //evaluate
+        result = price > 10;
+        console.log(result);
+
+        if(price > 10) {
+            // test
+            console.log("price > 10");
+        }
+        if(price > 0) {
+            // test
+            console.log("price > 0");
+        }
+
+        if (color) {
+            console.log("color has a value");
+        }
+        //set color to null, returns false
+        color = null;
+        console.log("color == null = " + Boolean(color));
+
+        // set empty string, also false
+        color = "";
+        console.log("color == '' = " + Boolean(color));
+
+        // NaN is false
+        value = 100 / "test";
+        console.log("100/ 'test' = " + Boolean(value));
+
+        // && and ||
+        if (price > 10 && price < 1600){
+            console.log("price > 10 && price < 1600 is 'true'");
+        }
+        if (price > 10 && price < 200){
+            console.log("price > 10 && price < 200 is 'true'");
+        }
+        else {
+            console.log("price > 10 && price < 200 is 'falsey'");
+        }
+
+        if (price > 10 || price < 1600){
+            console.log("price > 10 && price < 1600 is 'true'");
+        }
+        if (price > 10 || price > 1600){
+            console.log("price > 10 && price > 1600 is 'true'");
+        }
+        if (!(price < 10)) {
+            console.log("!(price < 10 is true");
+        }
+    }
+    </script>
+</body>

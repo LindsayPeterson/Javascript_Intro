@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>short circuit Samples</title>
+</head>
+
+<body>
+    <button onclick="shortCircuitAnd();">short circuit &&</button>
+    <button onclick="shortCircuitOr();">short circuit ||</button>
+
+    <script>
+         'use scrict'
+
+    function shortCircuitAnd() {
+        let result;
+
+        result = colorRed("black") && greaterThan(1400);
+    }
+
+    function colorRed(value) {
+        console.log("in the colorRed function");
+        return value === "Red";
+    }
+
+    function greaterThan(value) {
+        console.log("in the greaterThan() function");
+        return value > 1400;
+    }
+
+    function shortCircuitOr() {
+        let result;
+
+        result = colorRed("Red") || greaterThan(200);
+
+        console.log("");
+        console.log("calling greater than first");
+        result = greaterThan(200) || colorRed("black");
+    }
+
+    </script>
+</body>
