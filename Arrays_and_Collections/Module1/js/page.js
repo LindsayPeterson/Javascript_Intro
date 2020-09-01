@@ -3,28 +3,37 @@ let ctx = document.getElementById('monthlySales').getContext('2d');
 let pieCtx = document.getElementById('deptSales').getContext('2d');
 let yearlyLabel = document.getElementById('yearlyTotal');
 
-let monthlySales = Array.of(500,9000,3234);
+let monthlySales = Array.of(500,9000,3234,5000);
 let monthlyLabels = Array.of('Oct', 'Nov', 'Dec');
 
 let deptSales = Array.of(14,4,9);
 let deptLabels = Array.of('Hiking', 'Running', 'Hunting');
 
-function addYearlyTotal(a,b,c){
-    return a+b+c;
+let yearlyTotal = 0;
+
+function addYearlyTotal(x){
+    yearlyTotal = x + yearlyTotal;
 }
+
+monthlySales.forEach(addYearlyTotal);
 
 let octNums = Array.of(5000,9000,2500);
 let novNums = Array.of(1100,2000,7000);
 let decNums = Array.of(4000,1000,5000);
 
-let total = Array.of(addYearlyTotal(...octNums), addYearlyTotal(...novNums), addYearlyTotal(...decNums));
+// let total = Array.of(addYearlyTotal(...octNums), addYearlyTotal(...novNums), addYearlyTotal(...decNums));
 
-let yearlyTotal = addYearlyTotal(...monthlySales);
+// let yearlyTotal = addYearlyTotal(...monthlySales);
 yearlyLabel.innerHTML = "$" + yearlyTotal;
 
 function findOver1000(){
     let firstThousand = monthlySales.findIndex(element => element > 1000);
     alert(firstThousand);
+}
+
+function resetNum(){
+    monthlySales.fill(0);
+    monthlySalesChart.update();
 }
 
 // Bar
