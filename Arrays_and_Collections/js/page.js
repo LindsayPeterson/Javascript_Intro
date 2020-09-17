@@ -8,12 +8,22 @@ let yearlyLabel = document.getElementById('yearlyTotal');
 let newAmount = document.getElementById('itemAmount');
 let newMonth = document.getElementById('monthId');
 
+let hikingRadio = document.getElementById('hiking');
+let runningRadio = document.getElementById('running');
+let huntingRadio = document.getElementById('hunting');
+
 let yearlyTotal = 0;
 
 const monthlySales = new Set();
 const monthlyLabels = new Set();
 
-function addSale(){
+const categories = new WeakSet();
+
+let hiking = {category: 'Hiking'};
+let running = {category: 'Running'};
+let hunting = {category: 'Hunting'};
+
+function addSale() {
     monthlySales.add(parseInt(newAmount.value));
     monthlyLabels.add(newMonth.value);
 
@@ -23,7 +33,7 @@ function addSale(){
         dataset.data = [];
     })
 
-    for (let amount of monthlySales){
+    for (let amount of monthlySales) {
         yearlyTotal = amount + yearlyTotal;
         yearlyLabel.innerHTML = yearlyTotal;
 
@@ -36,6 +46,18 @@ function addSale(){
     monthlySalesChart.data.labels = Array.from(monthlyLabels);
 
     monthlySalesChart.update();
+
+    if (hikingRadio.checked) {
+        categories.add(hiking);
+    } else if (runningRadio.checked) {
+        categories.add(running);
+    } else if (huntingRadio.checked) {
+        categories.add(hunting);
+    } else {
+        // do something else
+    }
+
+    console.log(categories);
 
 }
 
@@ -92,6 +114,5 @@ var monthlySalesChart = new Chart(ctx, {
 //         }]
 //     },
 //     options: {
-        
 //     }
 // })
