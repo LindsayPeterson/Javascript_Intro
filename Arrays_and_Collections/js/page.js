@@ -6,7 +6,11 @@ let hikingRadio = document.getElementById('hiking');
 let runningRadio = document.getElementById('running');
 let huntingRadio = document.getElementById('hunting');
 
-// Code goes here
+let testBuffer = new ArrayBuffer(16)
+
+if(testBuffer.byteLength == 16){
+    alert('yes!')
+}
 
 // Add Sales
 function addSale(){
