@@ -1,29 +1,34 @@
 #! /usr/bin/env node
 
-function myIterator(start, finish) {
-    let index = start;
-    let count = 0;
+const arr = [0, 3, 4, 6];
 
-    return {
-        next(){
-            let result;
-            if (index < finish) {
-                result = { value: index, done: false};
-                index += 1;
-                count++;
-                return result;
-            }
-            return {
-                value: count,
-                done: true
-            }
-        }
-    }
+const it = arr[Symbol.iterator]();
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+console.log(it.next());
+
+const map = new Map();
+map.set('key1', 'value1');
+map.set('key2', 'value2');
+const mapIterator = map[Symbol.iterator]();
+console.log(mapIterator.next().value);
+console.log(mapIterator.next().value);
+
+for (const [key, value] of map) {
+    console.log(`${key} and ${value}`);
 }
 
-const it = myIterator(0, 10);
-let res = it.next();
-while(!res.done) {
-    console.log(res.value)
-    res = it.next()
+const mySet = new Set();
+mySet.add('one');
+mySet.add('two');
+
+const setIterator = mySet[Symbol.iterator]();
+console.log(setIterator.next());
+console.log(setIterator.next());
+console.log(setIterator.next());
+
+for(const value of mySet) {
+    console.log(value)
 }
