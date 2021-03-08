@@ -87,15 +87,7 @@
       "firstname": "Sam",
       "lastname": "Davies",
       "email": "sam@acme.com",
-      "log": [
-        {
-          "1572791640182": {
-            "food": "apple",
-            "servingSize": "2",
-            "calories": 176
-          }
-        }
-      ]
+      "log": []
     }
   ]
 }
