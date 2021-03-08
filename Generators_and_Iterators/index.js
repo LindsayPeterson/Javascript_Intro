@@ -12,6 +12,7 @@ readline.on('line', async line => {
       {
         const { data } = await axios.get(`http://localhost:3001/food`);
         function* listVeganFoods() {
+          try {
             let idx = 0;
             const veganOnly = data.filter(food =>
               food.dietary_preferences.includes('vegan'),
@@ -20,6 +21,10 @@ readline.on('line', async line => {
               yield veganOnly[idx];
               idx++;
             }
+          } catch (error) {
+            console.log('Something went wrong while listing vegan items', {
+              error,
+            });
           }
         }
         for (let val of listVeganFoods()) {
@@ -43,12 +48,53 @@ readline.on('line', async line => {
         }
       }
 
-      function askForServingSize(food) {
-        readline.question('How many servings did you eat? ',
-        servingSize => {
-          actionIt.next(servingSize, food)
-        },
-      );
+      function askForServingSize() {
+        readline.question(
+          `How many servings did you eat? ( as a decimal: 1, 0.5, 1.25, etc.. ) `,
+          servingSize => {
+            if (servingSize === 'nevermind' || servingSize === 'n') {
+              actionIt.return();
+            } else if (typeof servingSize !== 'number' || servingSize === NaN) {
+              actionIt.throw('Please, numbers only');
+            } else {
+              actionIt.next(servingSize);
+            }
+          },
+        );
+      }
+
+      async function displayCalories(servingSize = 1, food) {
+        const calories = food.calories;
+        console.log(
+          `${
+            food.name
+          } with a serving size of ${servingSize} has ${Number.parseFloat(
+            calories * parseInt(servingSize, 10),
+          ).toFixed()} calories.`,
+        );
+        const { data } = await axios.get(`http://localhost:3001/users/1`);
+        const usersLog = data.log || [];
+        const putBody = {
+          ...data,
+          log: [
+            ...usersLog,
+            {
+              [Date.now()]: {
+                food: food.name,
+                servingSize,
+                calories: Number.parseFloat(
+                  calories * parseInt(servingSize, 10),
+                ),
+              },
+            },
+          ],
+        };
+        await axios.put(`http://localhost:3001/users/1`, putBody, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+
         actionIt.next();
         readline.prompt();
       }
@@ -75,7 +121,6 @@ readline.on('line', async line => {
         const { data } = await axios.get(
           `http://localhost:3001/users?email=${emailAddress}`,
         );
-        // arrays are built in iterables
         const foodLog = data[0].log || [];
         let totalCalories = 0;
         function* getFoodLog() {
@@ -92,6 +137,11 @@ readline.on('line', async line => {
             console.log(
               `${entry[timestamp].food}, ${entry[timestamp].servingSize} serving(s)`,
             );
+            totalCalories += entry[timestamp].calories;
+            if (totalCalories >= 12000) {
+              console.log(`Impressive! You've reached 12,000 calories`);
+              logIterator.return();
+            }
           }
         }
         console.log('---------------');
